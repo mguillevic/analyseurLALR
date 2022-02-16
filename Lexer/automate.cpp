@@ -44,11 +44,11 @@ void Automate::run(){
    bool stop =false;
    while(!stop) {
       s=lexer->Consulter();
-      bool info = pileEtats.top()->transition(*this,s);
-      if((*s==FIN && info) || *pileSymboles.top()==ERREUR){
+      bool avancer = pileEtats.top()->transition(*this,s);
+      if((*s==FIN && avancer) || *pileSymboles.top()==ERREUR){
           stop=true;
       }
-      if(info){lexer->Avancer();}
+      if(avancer){lexer->Avancer();}
    }
    
    if(*pileSymboles.top()==ERREUR){
