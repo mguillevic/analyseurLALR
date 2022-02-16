@@ -1,9 +1,12 @@
 #include "automate.h"
 #include "etat.h"
 
+#include <iostream>
+using namespace std;
+
 Automate::Automate(string flux){
-    Lexer * lexer = new Lexer(flux);
-    Etat0 * etat0;
+    lexer = new Lexer(flux);
+    Etat0 * etat0= new Etat0();
     pileEtats.push(etat0);
 }
 
@@ -34,6 +37,27 @@ Symbole * Automate::getTopSymbole(){
 void Automate::deleteTopSymbole(){
     delete(pileSymboles.top());
     pileSymboles.pop();
+}
+
+void Automate::run(){
+   Symbole * s;
+   bool stop =false;
+   while(!stop) {
+      s=lexer->Consulter();
+      bool info = pileEtats.top()->transition(*this,s);
+      if((*s==FIN && info) || *pileSymboles.top()==ERREUR){
+          stop=true;
+      }
+      if(info){lexer->Avancer();}
+   }
+   
+   if(*pileSymboles.top()==ERREUR){
+       cout<<"La syntaxe est non valide"<<endl;
+   }else{
+       cout<<"La syntaxe est valide. La valeur calculéé est égal à: "<<((Expression *) pileSymboles.top())->getValeur()<<endl;
+   }
+   
+    
 }
 
 

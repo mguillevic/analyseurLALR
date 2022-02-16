@@ -14,8 +14,9 @@ class Automate {
       virtual ~Automate();
       void decalage(Symbole * s, Etat * etat);
       void reduction(Symbole * s, int nbEtat);
-      Symbole* getTopSymbole();
+      Symbole * getTopSymbole();
       void deleteTopSymbole();
+      void run();
 
    private:
       Lexer * lexer;

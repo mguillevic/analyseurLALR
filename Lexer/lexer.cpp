@@ -1,13 +1,17 @@
 #include "lexer.h"
+#include <iostream>
+using namespace std;
+
+string Lexer::getFlux(){
+   return flux;
+}
 
 Symbole * Lexer::Consulter() {
    if (!tampon) {
-
       if (tete==flux.length())
          tampon = new Symbole(FIN);
       else
       {
-
          switch (flux[tete]) {
             case '(':
                tampon = new Symbole(OPENPAR);

@@ -1,10 +1,37 @@
 #include "etat.h"
+#include <iostream>
+#include <string>
+using namespace std;
 
 Etat::Etat(){}
 Etat::Etat(string s){
     name = s;
 }
 Etat::~Etat(){}
+
+string Etat::getName(){
+    return name;
+}
+
+Etat0::~Etat0(){}
+
+Etat1::~Etat1(){}
+
+Etat2::~Etat2(){}
+
+Etat3::~Etat3(){}
+
+Etat4::~Etat4(){}
+
+Etat5::~Etat5(){}
+
+Etat6::~Etat6(){}
+
+Etat7::~Etat7(){}
+
+Etat8::~Etat8(){}
+
+Etat9::~Etat9(){}
 
 Etat0::Etat0() : Etat("E0"){}
 
@@ -29,16 +56,13 @@ Etat9::Etat9() : Etat("E9"){}
 bool Etat0::transition(Automate &automate, Symbole * s){
     switch(*s){
         case INT:
-            Etat3 * etat3;
-            automate.decalage(s,etat3);
+            automate.decalage(s,new Etat3());
             return true;
         case OPENPAR:
-            Etat2 * etat2;
-            automate.decalage(s, etat2);
+            automate.decalage(s, new Etat2());
             return true;
         case EXPR:
-            Etat1 * etat1;
-            automate.decalage(s,etat1);
+            automate.decalage(s,new Etat1());
             return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -51,15 +75,13 @@ bool Etat0::transition(Automate &automate, Symbole * s){
 bool Etat1::transition(Automate &automate, Symbole * s){
     switch(*s){
         case PLUS:
-            Etat4 * etat4;
-            automate.decalage(s,etat4);
+            automate.decalage(s,new Etat4());
             return true;
         case MULT:
-            Etat5 * etat5;
-            automate.decalage(s, etat5);
+            automate.decalage(s, new Etat5());
             return true;
         case FIN:
-            return false;
+            return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
             return false;
@@ -71,16 +93,13 @@ bool Etat1::transition(Automate &automate, Symbole * s){
 bool Etat2::transition(Automate &automate, Symbole * s){
     switch(*s){
         case INT:
-            Etat3 * etat3;
-            automate.decalage(s,etat3);
+            automate.decalage(s,new Etat3());
             return true;
         case OPENPAR:
-            Etat2 * etat2;
-            automate.decalage(s, etat2);
+            automate.decalage(s, new Etat2());
             return true;
         case EXPR:
-            Etat6 * etat6;
-            automate.decalage(s, etat6);
+            automate.decalage(s, new Etat6());
             return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -98,9 +117,11 @@ bool Etat3::transition(Automate &automate, Symbole * s){
         case FIN:
         {
             Entier * e1 = (Entier *) automate.getTopSymbole();
+            int val = e1->getValeur();
             automate.deleteTopSymbole();
-            automate.reduction(new Expression(e1->getValeur()),1);
-            return true;
+            
+            automate.reduction(new Expression(val),1);
+            return false;
         }
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -113,16 +134,13 @@ bool Etat3::transition(Automate &automate, Symbole * s){
 bool Etat4::transition(Automate &automate, Symbole * s){
     switch(*s){
         case INT:
-            Etat3 * etat3;
-            automate.decalage(s,etat3);
+            automate.decalage(s,new Etat3());
             return true;
         case OPENPAR:
-            Etat2 * etat2;
-            automate.decalage(s, etat2);
+            automate.decalage(s, new Etat2());
             return true;
         case EXPR:
-            Etat7 * etat7;
-            automate.decalage(s, etat7);
+            automate.decalage(s, new Etat7);
             return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -135,16 +153,13 @@ bool Etat4::transition(Automate &automate, Symbole * s){
 bool Etat5::transition(Automate &automate, Symbole * s){
     switch(*s){
         case INT:
-            Etat3 * etat3;
-            automate.decalage(s,etat3);
+            automate.decalage(s,new Etat3());
             return true;
         case OPENPAR:
-            Etat2 * etat2;
-            automate.decalage(s, etat2);
+            automate.decalage(s, new Etat2());
             return true;
         case EXPR:
-            Etat8 * etat8;
-            automate.decalage(s, etat8);
+            automate.decalage(s, new Etat8());
             return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -157,16 +172,13 @@ bool Etat5::transition(Automate &automate, Symbole * s){
 bool Etat6::transition(Automate &automate, Symbole * s){
     switch(*s){
         case PLUS:
-            Etat4 * etat4;
-            automate.decalage(s,etat4);
+            automate.decalage(s,new Etat4());
             return true;
         case MULT:
-            Etat5 * etat5;
-            automate.decalage(s, etat5);
+            automate.decalage(s, new Etat5());
             return true;
         case CLOSEPAR:
-            Etat9 * etat9;
-            automate.decalage(s, etat9);
+            automate.decalage(s, new Etat9());
             return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -184,16 +196,17 @@ bool Etat7::transition(Automate &automate, Symbole * s){
         case FIN:
         {
             Expression * e1 = (Expression *) automate.getTopSymbole();
+            int val1 = e1->getValeur();
             automate.deleteTopSymbole();
             automate.deleteTopSymbole();
             Expression * e2 = (Expression *) automate.getTopSymbole();
+            int val2 = e2->getValeur();
             automate.deleteTopSymbole();
-            automate.reduction(new Expression(e1->getValeur()+e2->getValeur()),3);
-            return true;
+            automate.reduction(new Expression(val1+val2),3);
+            return false;
         }
         case MULT:
-            Etat5 * etat5;
-            automate.decalage(s, etat5);
+            automate.decalage(s, new Etat5());
             return true;
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -210,13 +223,15 @@ bool Etat8::transition(Automate &automate, Symbole * s){
         case CLOSEPAR:
         case FIN:
         {
-            Expression * e1 = (Expression *) automate.getTopSymbole();
+            Expression *e1 = (Expression *) automate.getTopSymbole();
+            int val1 = e1->getValeur();
             automate.deleteTopSymbole();
             automate.deleteTopSymbole();
-            Expression * e2 = (Expression *) automate.getTopSymbole();
+            Expression *e2 = (Expression *) automate.getTopSymbole();
+            int val2 = e2->getValeur();
             automate.deleteTopSymbole();
-            automate.reduction(new Expression(e1->getValeur()*e2->getValeur()),3);
-            return true;
+            automate.reduction(new Expression(val1*val2),3);
+            return false;
         }
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -234,11 +249,12 @@ bool Etat9::transition(Automate &automate, Symbole * s){
         case FIN:
         {
             automate.deleteTopSymbole();
-            Expression * e1 = (Expression *) automate.getTopSymbole();
+            Expression *e1 = (Expression *) automate.getTopSymbole();
+            int val = e1->getValeur();
             automate.deleteTopSymbole();
             automate.deleteTopSymbole();
-            automate.reduction(new Expression(e1->getValeur()),3);
-            return true;
+            automate.reduction(new Expression(val),3);
+            return false;
         }
         default:
             automate.decalage(new Symbole(ERREUR),NULL);
@@ -247,3 +263,7 @@ bool Etat9::transition(Automate &automate, Symbole * s){
 
     return false;
 }
+
+// int Etat0::getEtat(){
+//     return etat;
+// }
