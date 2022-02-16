@@ -1,7 +1,7 @@
 all: main
 
 main: lexer.o symbole.o etat.o automate.o main.o
-	g++ -o main lexer.o symbole.o state.o automate.o main.o
+	g++ -o main lexer.o symbole.o etat.o automate.o main.o
 
 lexer.o: lexer.cpp lexer.h
 	g++ -o lexer.o -c lexer.cpp
@@ -9,13 +9,13 @@ lexer.o: lexer.cpp lexer.h
 symbole.o: symbole.cpp symbole.h
 	g++ -o symbole.o -c symbole.cpp
 
-state.o: etat.cpp etat.h
+etat.o: etat.cpp etat.h
 	g++ -o etat.o -c etat.cpp
 
 automate.o: automate.cpp automate.h
 	g++ -o automate.o -c automate.cpp
 
-main.o: main.cpp symbole.h lexer.h State.h
+main.o: main.cpp symbole.h lexer.h etat.h
 	g++ -o main.o -c main.cpp
 
 clean:
