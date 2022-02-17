@@ -4,7 +4,7 @@
 
 
 int main(void) {
-   string chaine("5+6*9");
+   string chaine("5*8+6");
 
    Automate automate(chaine);
    automate.run();
