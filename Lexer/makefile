@@ -19,4 +19,4 @@ Main.o: Main.cpp Symbole.h Lexer.h Etat.h
 	g++ -o Main.o -c Main.cpp
 
 clean:
-	rm -rf *.o
+	rm -rf *.o *.exe
