@@ -1,17 +1,22 @@
-#include "etat.h"
+/*************************************************************************
+                           Etat  -  description
+                             -------------------
+    début                : 16/02/22
+    copyright            : (C) 2022 par M'BARECK Aichetou et GUILLEVIC Marie
+*************************************************************************/
+
 #include <iostream>
 #include <string>
 using namespace std;
+
+
+#include "Etat.h"
 
 Etat::Etat(){}
 Etat::Etat(string s){
     name = s;
 }
 Etat::~Etat(){}
-
-string Etat::getName(){
-    return name;
-}
 
 Etat0::~Etat0(){}
 

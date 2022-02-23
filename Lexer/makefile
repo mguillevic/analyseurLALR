@@ -1,22 +1,22 @@
-all: main
+all: Main
 
-main: lexer.o symbole.o etat.o automate.o main.o
-	g++ -o main lexer.o symbole.o etat.o automate.o main.o
+Main: Lexer.o Symbole.o Etat.o Automate.o Main.o
+	g++ -o Main Lexer.o Symbole.o Etat.o Automate.o Main.o
 
-lexer.o: lexer.cpp lexer.h
-	g++ -o lexer.o -c lexer.cpp
+Lexer.o: Lexer.cpp Lexer.h
+	g++ -o Lexer.o -c Lexer.cpp
 
-symbole.o: symbole.cpp symbole.h
-	g++ -o symbole.o -c symbole.cpp
+Symbole.o: Symbole.cpp Symbole.h
+	g++ -o Symbole.o -c Symbole.cpp
 
-etat.o: etat.cpp etat.h
-	g++ -o etat.o -c etat.cpp
+Etat.o: Etat.cpp Etat.h
+	g++ -o Etat.o -c Etat.cpp
 
-automate.o: automate.cpp automate.h
-	g++ -o automate.o -c automate.cpp
+Automate.o: Automate.cpp Automate.h
+	g++ -o Automate.o -c Automate.cpp
 
-main.o: main.cpp symbole.h lexer.h etat.h
-	g++ -o main.o -c main.cpp
+Main.o: Main.cpp Symbole.h Lexer.h Etat.h
+	g++ -o Main.o -c Main.cpp
 
 clean:
 	rm -rf *.o

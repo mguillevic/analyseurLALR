@@ -1,6 +1,8 @@
-#include "lexer.h"
+
 #include <iostream>
 using namespace std;
+
+#include "Lexer.h"
 
 string Lexer::getFlux(){
    return flux;

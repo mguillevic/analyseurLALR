@@ -1,8 +1,15 @@
-#include "automate.h"
-#include "etat.h"
+/*************************************************************************
+                           Automate  -  description
+                             -------------------
+    début                : 16/02/22
+    copyright            : (C) 2022 par M'BARECK Aichetou et GUILLEVIC Marie
+*************************************************************************/
 
 #include <iostream>
 using namespace std;
+
+#include "Automate.h"
+#include "Etat.h"
 
 Automate::Automate(string flux){
     lexer = new Lexer(flux);
@@ -10,7 +17,9 @@ Automate::Automate(string flux){
     pileEtats.push(etat0);
 }
 
-Automate::~Automate(){}
+Automate::~Automate(){
+    delete lexer;
+}
 
 void Automate::decalage(Symbole * s, Etat * etat){
     pileEtats.push(etat);
@@ -54,7 +63,7 @@ void Automate::run(){
    if(*pileSymboles.top()==ERREUR){
        cout<<"La syntaxe est non valide"<<endl;
    }else{
-       cout<<"La syntaxe est valide. La valeur calculéé est égal à: "<<((Expression *) pileSymboles.top())->getValeur()<<endl;
+       cout<<"La syntaxe est valide. La valeur calculée est égale à: "<<((Expression *) pileSymboles.top())->getValeur()<<endl;
    }
    
     

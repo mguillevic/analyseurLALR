@@ -1,4 +1,11 @@
-#include "symbole.h"
+/*************************************************************************
+                           Symbole  -  description
+                             -------------------
+    début                : 16/02/22
+    copyright            : (C) 2022 par M'BARECK Aichetou et GUILLEVIC Marie
+*************************************************************************/
+
+#include "Symbole.h"
 #include <iostream>
 
 void Symbole::Affiche() {

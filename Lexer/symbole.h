@@ -1,3 +1,12 @@
+/*************************************************************************
+                           Symbole  -  description
+                             -------------------
+    début                : 16/02/22
+    copyright            : (C) 2022 par M'BARECK Aichetou et GUILLEVIC Marie
+*************************************************************************/
+#if ! defined ( SYMBOLE_H )
+#define SYMBOLE_H
+
 #pragma once
 
 #include <string>
@@ -82,3 +91,5 @@ class Expression: public Symbole{
    protected:
       int valeur;
 };
+
+#endif //SYMBOLE_H

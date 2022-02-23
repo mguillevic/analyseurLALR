@@ -1,10 +1,20 @@
+/*************************************************************************
+                           Etat  -  description
+                             -------------------
+    début                : 16/02/22
+    copyright            : (C) 2022 par M'BARECK Aichetou et GUILLEVIC Marie
+*************************************************************************/
+
+#if ! defined ( ETAT_H )
+#define ETAT_H
+
 #pragma once
 
 #include <string>
 using namespace std;
 
-#include "automate.h"
-#include "symbole.h"
+#include "Automate.h"
+#include "Symbole.h"
 
 class Etat0;
 class Etat1;
@@ -23,8 +33,6 @@ class Etat {
       Etat(string s);
       virtual ~Etat();
       virtual bool transition(Automate &automate, Symbole * s)=0;
-      string getName();
-      // virtual int getEtat();
 
       protected:
         string name;
@@ -36,10 +44,6 @@ class Etat0 : public Etat{
       Etat0();
       virtual ~Etat0();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -49,10 +53,6 @@ class Etat1 : public Etat{
       Etat1();
       virtual ~Etat1();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -62,10 +62,6 @@ class Etat2 : public Etat{
       Etat2();
       virtual ~Etat2();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -75,10 +71,6 @@ class Etat3 : public Etat{
       Etat3();
       virtual ~Etat3();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -88,10 +80,6 @@ class Etat4 : public Etat{
       Etat4();
       virtual ~Etat4();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -101,10 +89,6 @@ class Etat5 : public Etat{
       Etat5();
       virtual ~Etat5();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -114,10 +98,6 @@ class Etat6 : public Etat{
       Etat6();
       virtual ~Etat6();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -127,10 +107,6 @@ class Etat7 : public Etat{
       Etat7();
       virtual ~Etat7();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -140,10 +116,6 @@ class Etat8 : public Etat{
       Etat8();
       virtual ~Etat8();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
 
@@ -153,9 +125,7 @@ class Etat9 : public Etat{
       Etat9();
       virtual ~Etat9();
       bool transition(Automate & automate, Symbole * s);
-      // int getEtat();
-
-    private:
-      int etat;
 
 };
+
+#endif //ETAT_H
